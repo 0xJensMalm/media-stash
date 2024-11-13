@@ -25,75 +25,72 @@ export default function MediaGrid() {
 
       {/* Video Grid */}
       {filteredVideos.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-fr">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {filteredVideos.map(video => (
             <a 
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-dark-primary rounded-lg overflow-hidden hover:ring-2 hover:ring-blue-500 transition-all flex flex-col"
+              className="group bg-dark-primary aspect-square relative hover:ring-1 hover:ring-blue-500 transition-all"
             >
-              {/* Title */}
-              <div className="p-3 border-b border-gray-700">
-                <h3 className="text-sm font-medium text-gray-200 line-clamp-2">
+              {/* Thumbnail/Placeholder */}
+              {getVideoThumbnail(video.url) ? (
+                <img 
+                  src={getVideoThumbnail(video.url)}
+                  alt={video.title || 'Video thumbnail'}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-dark-surface">
+                  <svg 
+                    className="w-12 h-12 text-gray-500"
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={1.5} 
+                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    />
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={1.5} 
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+              )}
+
+              {/* Hover Overlay with Title and Tags */}
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all flex flex-col justify-between p-4 opacity-0 group-hover:opacity-100">
+                {/* Title at the top */}
+                <h3 className="text-sm font-medium text-white line-clamp-2">
                   {video.title || 'Untitled Video'}
                 </h3>
-              </div>
 
-              {/* Thumbnail/Placeholder Container */}
-              <div className="aspect-square relative flex-1">
-                {getVideoThumbnail(video.url) ? (
-                  <img 
-                    src={getVideoThumbnail(video.url)}
-                    alt={video.title || 'Video thumbnail'}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-dark-surface">
-                    <svg 
-                      className="w-12 h-12 text-gray-500"
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={1.5} 
-                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                      />
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={1.5} 
-                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                {/* Tags at the bottom */}
+                {video.tags?.length > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {video.tags.map(tag => (
+                      <span 
+                        key={tag} 
+                        className="px-2 py-0.5 bg-dark-surface bg-opacity-90 text-xs text-gray-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 )}
-
-                {/* Hover Overlay with Tags */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100">
-                  {video.tags?.length > 0 && (
-                    <div className="flex flex-wrap gap-1">
-                      {video.tags.map(tag => (
-                        <span 
-                          key={tag} 
-                          className="px-2 py-0.5 bg-dark-surface bg-opacity-90 rounded-full text-xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
               </div>
             </a>
           ))}
         </div>
       ) : (
-        // Empty state remains the same
+        // Empty state
         <div className="flex flex-col items-center justify-center py-12 text-gray-400">
           <svg 
             className="w-16 h-16 mb-4" 
