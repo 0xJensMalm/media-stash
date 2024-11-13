@@ -1,17 +1,16 @@
 // src/components/layout/media-grid.jsx
 import { useVideo } from '../../context/VideoContext';
-import { GRID_CONFIG, getVideoThumbnail, SUPPORTED_PLATFORMS } from '../../config/config';
+import { GRID_CONFIG, getVideoThumbnail } from '../../config/config';
 
 export default function MediaGrid() {
   const { videos, selectedFolder } = useVideo();
 
-  // Filter videos based on selected folder
   const filteredVideos = selectedFolder === 'All' 
     ? videos 
     : videos.filter(video => video.folder === selectedFolder);
 
   return (
-    <main className={`main-content p-${GRID_CONFIG.gridPadding}`}>
+    <main className="main-content mx-auto px-4">
       {/* Header with count */}
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center space-x-2 text-gray-400">
@@ -26,35 +25,24 @@ export default function MediaGrid() {
 
       {/* Video Grid */}
       {filteredVideos.length > 0 ? (
-        <div className={`
-          grid grid-cols-1 
-          sm:grid-cols-${GRID_CONFIG.gridColumns.sm}
-          lg:grid-cols-${GRID_CONFIG.gridColumns.lg}
-          xl:grid-cols-${GRID_CONFIG.gridColumns.xl}
-          2xl:grid-cols-${GRID_CONFIG.gridColumns['2xl']}
-          gap-${GRID_CONFIG.gridGap}
-        `}>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-fr">
           {filteredVideos.map(video => (
             <a 
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`
-                group bg-dark-primary rounded-lg overflow-hidden 
-                hover:ring-2 hover:ring-blue-500 
-                transition-all duration-${GRID_CONFIG.hoverTransitionDuration}
-              `}
+              className="group bg-dark-primary rounded-lg overflow-hidden hover:ring-2 hover:ring-blue-500 transition-all flex flex-col"
             >
               {/* Title */}
-              <div className={`p-${GRID_CONFIG.cardPadding} border-b border-gray-700`}>
-                <h3 className={`text-sm font-medium text-gray-200 line-clamp-${GRID_CONFIG.titleLines}`}>
+              <div className="p-3 border-b border-gray-700">
+                <h3 className="text-sm font-medium text-gray-200 line-clamp-2">
                   {video.title || 'Untitled Video'}
                 </h3>
               </div>
 
               {/* Thumbnail/Placeholder Container */}
-              <div className={`aspect-${GRID_CONFIG.aspectRatio} relative`}>
+              <div className="aspect-square relative flex-1">
                 {getVideoThumbnail(video.url) ? (
                   <img 
                     src={getVideoThumbnail(video.url)}
@@ -64,7 +52,7 @@ export default function MediaGrid() {
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-dark-surface">
                     <svg 
-                      className={`w-${GRID_CONFIG.defaultVideoIconSize} h-${GRID_CONFIG.defaultVideoIconSize} text-gray-500`}
+                      className="w-12 h-12 text-gray-500"
                       fill="none" 
                       viewBox="0 0 24 24" 
                       stroke="currentColor"
@@ -105,10 +93,10 @@ export default function MediaGrid() {
           ))}
         </div>
       ) : (
-        // Empty state
+        // Empty state remains the same
         <div className="flex flex-col items-center justify-center py-12 text-gray-400">
           <svg 
-            className={`w-${GRID_CONFIG.defaultVideoIconSize} h-${GRID_CONFIG.defaultVideoIconSize} mb-4`}
+            className="w-16 h-16 mb-4" 
             fill="none" 
             strokeLinecap="round" 
             strokeLinejoin="round" 
