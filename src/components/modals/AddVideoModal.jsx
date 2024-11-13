@@ -5,24 +5,24 @@ import { useVideo } from '../../context/VideoContext';
 export function AddVideoModal({ isOpen, onClose }) {
   const { folders, addVideo } = useVideo();
   const [url, setUrl] = useState('');
+  const [title, setTitle] = useState('');
   const [selectedFolder, setSelectedFolder] = useState('All');
   const [tags, setTags] = useState('');
-  const [comment, setComment] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addVideo({
       url,
+      title,
       folder: selectedFolder,
-      tags: tags.split(',').map(tag => tag.trim()).filter(Boolean),
-      comment
+      tags: tags.split(',').map(tag => tag.trim()).filter(Boolean)
     });
     onClose();
     // Reset form
     setUrl('');
+    setTitle('');
     setSelectedFolder('All');
     setTags('');
-    setComment('');
   };
 
   if (!isOpen) return null;
@@ -42,6 +42,19 @@ export function AddVideoModal({ isOpen, onClose }) {
               onChange={(e) => setUrl(e.target.value)}
               className="w-full px-3 py-2 bg-dark-primary rounded border border-gray-700 focus:outline-none focus:border-blue-500"
               placeholder="https://..."
+              required
+            />
+          </div>
+
+          {/* Title Input */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full px-3 py-2 bg-dark-primary rounded border border-gray-700 focus:outline-none focus:border-blue-500"
+              placeholder="Enter video title"
               required
             />
           </div>
@@ -69,18 +82,6 @@ export function AddVideoModal({ isOpen, onClose }) {
               onChange={(e) => setTags(e.target.value)}
               className="w-full px-3 py-2 bg-dark-primary rounded border border-gray-700 focus:outline-none focus:border-blue-500"
               placeholder="funny, cats, gaming"
-            />
-          </div>
-
-          {/* Comment Input */}
-          <div>
-            <label className="block text-sm font-medium mb-1">Comment (optional)</label>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              className="w-full px-3 py-2 bg-dark-primary rounded border border-gray-700 focus:outline-none focus:border-blue-500"
-              rows="3"
-              placeholder="Add a comment..."
             />
           </div>
 

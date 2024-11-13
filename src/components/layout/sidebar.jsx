@@ -5,9 +5,8 @@ import { AddVideoModal } from '../modals/AddVideoModal';
 
 export default function Sidebar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { folders, videos } = useVideo();
+  const { folders, videos, selectedFolder, setSelectedFolder } = useVideo();
 
-  // Calculate video count for each folder
   const getFolderCount = (folderName) => {
     if (folderName === 'All') {
       return videos.length;
@@ -15,7 +14,6 @@ export default function Sidebar() {
     return videos.filter(video => video.folder === folderName).length;
   };
 
-  // Get all unique tags from videos
   const getAllTags = () => {
     const tagSet = new Set();
     videos.forEach(video => {
@@ -45,9 +43,14 @@ export default function Sidebar() {
               {folders.map(folder => (
                 <div 
                   key={folder}
-                  className="p-2 hover:bg-dark-primary rounded cursor-pointer flex items-center justify-between group"
+                  className={`p-2 rounded cursor-pointer flex items-center justify-between group
+                    ${selectedFolder === folder 
+                      ? 'bg-dark-primary text-white' 
+                      : 'hover:bg-dark-primary text-gray-400 hover:text-white'
+                    }`}
+                  onClick={() => setSelectedFolder(folder)}
                 >
-                  <span className="group-hover:text-white transition-colors">
+                  <span className="transition-colors">
                     {folder}
                   </span>
                   <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
