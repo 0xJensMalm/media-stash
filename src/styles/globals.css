@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply h-full w-full m-0 p-0;
+  }
+
+  body {
+    @apply bg-dark-bg text-gray-200;
+  }
+
+  #root {
+    @apply h-full w-full;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .layout-container {
+    @apply min-h-screen bg-dark-bg flex flex-col;
+  }
+
+  .main-content {
+    @apply ml-64 mt-16 p-6 flex-1;
+  }
+}
