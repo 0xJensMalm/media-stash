@@ -1,0 +1,178 @@
+{
+  "videos": [
+    {
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "title": "Never Gonna Give You Up",
+      "tags": ["Music", "Classic"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      "title": "Me at the zoo",
+      "tags": ["Historic", "First"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_f_BnneFanM",
+      "title": "Super Mario Odyssey Review",
+      "tags": ["Gaming", "Review"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+      "title": "Despacito",
+      "tags": ["Music", "Popular"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+      "title": "Gangnam Style",
+      "tags": ["Music", "Dance"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1w7OgIMMRc4",
+      "title": "Minecraft Gameplay",
+      "tags": ["Gaming", "Tutorial"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8jLOx1hD3_o",
+      "title": "Coding Tutorial",
+      "tags": ["Programming", "Education"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Z1RJmh_OqeA",
+      "title": "Python for Beginners",
+      "tags": ["Programming", "Tutorial"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=oHg5SJYRHA0",
+      "title": "The Greatest Prank Ever",
+      "tags": ["Comedy", "Classic"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=V-_O7nl0Ii0",
+      "title": "Livin' on a Prayer",
+      "tags": ["Music", "Rock", "80s"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+      "title": "Shape of You",
+      "tags": ["Music", "Pop", "Ed Sheeran"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+      "title": "Relaxing Nature Sounds",
+      "tags": ["Nature", "Relaxation", "ASMR"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZZ5LpwO-An4",
+      "title": "He-Man Sings Hey Ya",
+      "tags": ["Comedy", "Animation", "Meme"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=C0DPdy98e4c",
+      "title": "Funny Cat Compilation",
+      "tags": ["Animals", "Comedy", "Cats"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ME5xkeTFBCI",
+      "title": "Epic Fails Compilation",
+      "tags": ["Comedy", "Fails"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=QtXby3twMmI",
+      "title": "Soothing Piano Music",
+      "tags": ["Music", "Relaxing", "Piano"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+      "title": "Gangnam Style",
+      "tags": ["Music", "K-pop", "Dance"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=hTWKbfoikeg",
+      "title": "Smells Like Teen Spirit",
+      "tags": ["Music", "Grunge", "Nirvana"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
+      "title": "Nyan Cat 10 Hours",
+      "tags": ["Meme", "Loop", "Cat"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Wch3gJG2GJ4",
+      "title": "Minecraft - How to Build a House",
+      "tags": ["Gaming", "Minecraft", "Tutorial"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=km2OPUctni4",
+      "title": "5 Minute Crafts - Amazing DIY Ideas",
+      "tags": ["DIY", "Crafts", "Tutorial"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZE5nzQx5w3I",
+      "title": "Top 10 Best Movies of All Time",
+      "tags": ["Movies", "Top 10", "Review"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=PiFGSmTfkEQ",
+      "title": "Science Experiments You Can Do at Home",
+      "tags": ["Science", "Experiments", "Educational"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=s7L2PVdrb_8",
+      "title": "Cooking a Gourmet Meal at Home",
+      "tags": ["Cooking", "Recipe", "Gourmet"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wp43OdtAAkM",
+      "title": "10 Hours of Rain Sounds",
+      "tags": ["Nature", "Relaxation", "Sleep"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+      "title": "Despacito",
+      "tags": ["Music", "Latin", "Pop"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=7wtfhZwyrcc",
+      "title": "Believer - Imagine Dragons",
+      "tags": ["Music", "Rock", "Pop"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Q8TXgCzxEnw",
+      "title": "10 Tips for a Productive Morning",
+      "tags": ["Lifestyle", "Productivity", "Self-Improvement"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=l9PxOanFjxQ",
+      "title": "Time Lapse of the Stars",
+      "tags": ["Nature", "Space", "Time Lapse"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=d8ekz_CSBVg",
+      "title": "Learning to Code in 10 Minutes",
+      "tags": ["Coding", "Tutorial", "Programming"]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=0fKBhvDjuy0",
+      "title": "Powers of Ten",
+      "tags": ["Science", "Documentary", "Space"]
+    }
+  ],
+  "sampleTags": [
+    "Music",
+    "Gaming",
+    "Programming",
+    "Tutorial",
+    "Review",
+    "Vlog",
+    "Education",
+    "Entertainment",
+    "Tech",
+    "Science"
+  ],
+  "sampleFolders": [
+    "Favorites",
+    "Watch Later",
+    "Tutorials",
+    "Music Videos",
+    "Gaming"
+  ]
+}

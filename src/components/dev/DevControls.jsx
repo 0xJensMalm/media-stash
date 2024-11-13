@@ -1,5 +1,4 @@
-// src/components/dev/DevControls.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useVideo } from '../../context/VideoContext';
 import { DEV_CONFIG } from '../../config/config';
 
@@ -7,14 +6,27 @@ export function DevModal({ isOpen, onClose }) {
   const { addVideo, selectedFolder } = useVideo();
   const [videoCount, setVideoCount] = useState('');
   const [isAdding, setIsAdding] = useState(false);
+  const [sampleData, setSampleData] = useState(null);
+
+  useEffect(() => {
+    // Load sample data when modal opens
+    if (isOpen && !sampleData) {
+      fetch('/src/config/yt_urls.json')
+        .then(response => response.json())
+        .then(data => setSampleData(data))
+        .catch(error => console.error('Error loading sample data:', error));
+    }
+  }, [isOpen]);
 
   const generateRandomVideos = () => {
-    const count = parseInt(videoCount) || 5; // Fallback to 5 if no input
-    const { sampleYoutubeVideos, sampleTags } = DEV_CONFIG;
+    if (!sampleData) return;
+
+    const count = parseInt(videoCount) || DEV_CONFIG.defaultVideoCount;
+    const maxVideos = Math.min(count, DEV_CONFIG.maxRandomVideos);
     
-    for (let i = 0; i < count; i++) {
-      const randomVideo = sampleYoutubeVideos[Math.floor(Math.random() * sampleYoutubeVideos.length)];
-      const randomTags = DEV_CONFIG.sampleTags
+    for (let i = 0; i < maxVideos; i++) {
+      const randomVideo = sampleData.videos[Math.floor(Math.random() * sampleData.videos.length)];
+      const randomTags = sampleData.sampleTags
         .sort(() => 0.5 - Math.random())
         .slice(0, Math.floor(Math.random() * 3) + 1);
       
@@ -54,10 +66,10 @@ export function DevModal({ isOpen, onClose }) {
                   type="number"
                   value={videoCount}
                   onChange={(e) => setVideoCount(e.target.value)}
-                  placeholder="Number of videos (default: 5)"
+                  placeholder={`Number of videos (default: ${DEV_CONFIG.defaultVideoCount})`}
                   className="flex-1 px-3 py-2 bg-dark-bg rounded border border-gray-700 focus:outline-none focus:border-blue-500"
                   min="1"
-                  max="20"
+                  max={DEV_CONFIG.maxRandomVideos}
                 />
                 <button
                   onClick={() => setIsAdding(false)}
@@ -70,6 +82,7 @@ export function DevModal({ isOpen, onClose }) {
                 <button
                   onClick={generateRandomVideos}
                   className="p-2 text-green-500 hover:text-green-400 transition-colors"
+                  disabled={!sampleData}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
